@@ -9,21 +9,53 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from  decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# Email config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp. Email Backend'
+EMAIL_HOST =config("EMAIL_HOST", cast=str, default='smtp.gmail.com')
+EMAIL_PORT_=config("EMAIL_PORT", cast =str, default='587') # Recommended
+EMAIL_HOST_USER = config("EMAIL_HOST_USER", cast=str, default=None)
+EMAIL_HOST_PASSWORD =config("EMAIL_HOST_PASSWORD", cast =str, default=None)
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=True) # Use EMAIL_PORT 587for TLS
+EMAIL_USE_SSL =config("EMAIL_USE_SSL", cast=bool, default=False) # Use MAIL PORT 465 for SSL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-55mjavc8s$fx^t1eh0!t*+v(6c*sped)%!kc7)pb$)pwnq3kl_'
+SECRET_KEY = config("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DJANGO_DEBUG",cast=bool)
+print("DEBUG", DEBUG,type(DEBUG))
 
 ALLOWED_HOSTS = [
     ".railway.app"#"https://saas.prodrailway.app"
@@ -97,6 +129,16 @@ DATABASES = {
 }
 
 
+CONN_MAX_AGE = config("CONN_MAX_AGE",cast=int,default=30)
+DATABASE_URL = config("DATABASE_URL",cast=str)
+if DATABASE_URL is not None:
+    import dj_database_url
+    DATABASES = { 
+        "default": dj_database_url.config(default=DATABASE_URL,conn_max_age=CONN_MAX_AGE,conn_health_checks=True)
+      }
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -132,6 +174,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_BASE_DIR= BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [
+    STATICFILES_BASE_DIR 
+]
+STATIC_ROOT =BASE_DIR/"local-cdn"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
