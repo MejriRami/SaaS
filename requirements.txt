@@ -3,3 +3,6 @@ gunicorn
 python-decouple
 psycopg[binary]
 dj-database-url
+requests
+whitenoise
+django-allauth[socialaccounnt]
