@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Email config
-EMAIL_BACKEND = 'django.core.mail.backends.smtp. Email Backend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST =config("EMAIL_HOST", cast=str, default='smtp.gmail.com')
 EMAIL_PORT_=config("EMAIL_PORT", cast =str, default='587') # Recommended
 EMAIL_HOST_USER = config("EMAIL_HOST_USER", cast=str, default=None)
@@ -83,11 +83,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #my-apps
-    'visits'
+    'visits',
     #third party apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'commando',
+    "allauth_ui",
+    "widget_tweaks",
+    "slippers",
+    "allauth.socialaccount.providers.github"
 
 
 ]
@@ -163,7 +168,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+# Django Allauth Config
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_EMAIL_VERIFICATION="mandatory"
+ACCOUNT_EMAIL_REQUIRED=True
 #django all  auth config 
 AUTHENTICATION_BACKENDS = [
    # ...

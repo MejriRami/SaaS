@@ -5,4 +5,7 @@ psycopg[binary]
 dj-database-url
 requests
 whitenoise
-django-allauth[socialaccounnt]
+django-allauth[socialaccount]
+django-allauth-ui
+django-widget-tweaks
+slippers
