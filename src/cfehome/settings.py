@@ -89,6 +89,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'commando',
+    "customers",
     "allauth_ui",
     "widget_tweaks",
     "slippers",
