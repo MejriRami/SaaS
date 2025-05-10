@@ -84,6 +84,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #my-apps
     'visits',
+    'profiles',
+    "subscriptions",
     #third party apps
     'allauth',
     'allauth.account',
@@ -93,6 +95,7 @@ INSTALLED_APPS = [
     "allauth_ui",
     "widget_tweaks",
     "slippers",
+    
     "allauth.socialaccount.providers.github"
 
 
@@ -223,5 +226,8 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': '456',
             'key': ''
         }
-    }
+    },
+    "github": {
+        "VERIFIED_EMAIL": True
+    },
 }
