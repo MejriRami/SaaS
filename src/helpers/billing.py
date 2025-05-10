@@ -20,3 +20,18 @@ def create_customer(name="",email="",raw=False):
     stripe_id=response.id
     return stripe_id
 
+
+
+def create_customer(name="",email="",raw=False):
+    response=stripe.Customer.create(
+        name=name,
+        email=email,
+        )
+    if raw:
+        return response
+    stripe_id=response.id
+    return stripe_id
+
+
+
+
