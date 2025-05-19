@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Netflix Clone - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #141414;
+      color: white;
+    }
+
+    .navbar {
+      background-color: #111;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      color: #e50914;
+      font-size: 24px;
+    }
+
+    .categories {
+      padding: 20px;
+    }
+
+    .category-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .movie-row {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+    }
+
+    .movie {
+      min-width: 180px;
+      height: 270px;
+      background-color: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .movie:hover {
+      transform: scale(1.05);
+    }
+
+    .movie img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <h1>MyFlix</h1>
+    <div class="menu">
+      <span>Home</span>
+      <span>TV Shows</span>
+      <span>Movies</span>
+      <span>My List</span>
+    </div>
+  </div>
+
+  <div class="categories">
+    <div>
+      <div class="category-title">Trending Now</div>
+      <div class="movie-row">
+        <div class="movie"><img src="https://via.placeholder.com/180x270?text=Movie+1" alt="Movie 1"></div>
+        <div class="movie"><img src="https://via.placeholder.com/180x270?text=Movie+2" alt="Movie 2"></div>
+        <div class="movie"><img src="https://via.placeholder.com/180x270?text=Movie+3" alt="Movie 3"></div>
+        <!-- Add more movies -->
+      </div>
+    </div>
+
+    <div>
+      <div class="category-title">Top Rated</div>
+      <div class="movie-row">
+        <div class="movie"><img src="https://via.placeholder.com/180x270?text=Movie+4" alt="Movie 4"></div>
+        <div class="movie"><img src="https://via.placeholder.com/180x270?text=Movie+5" alt="Movie 5"></div>
+        <div class="movie"><img src="https://via.placeholder.com/180x270?text=Movie+6" alt="Movie 6"></div>
+      </div>
+    </div>
+    
+    <!-- More categories can be added here -->
+  </div>
+
+</body>
+</html>
